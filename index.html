@@ -1,58 +1,256 @@
 <!DOCTYPE html>
 <html lang="pt-BR">
 <head>
-  <meta charset="UTF-8" />
-  <meta name="viewport" content="width=device-width, initial-scale=1.0" />
-  <title>OverDollar — Em breve</title>
-  <style>
-    * {
-      margin: 0;
-      padding: 0;
-      box-sizing: border-box;
-    }
+<meta charset="UTF-8">
+<meta name="viewport" content="width=device-width, initial-scale=1.0">
+<title>OverDollar</title>
+<style>
+body {
+  background: linear-gradient(270deg, #072a43, #0e4f39, #189254, #0e4f39, #072a43);
+  background-size: 400% 400%;
+  animation: neonGradient 20s ease-in-out infinite;
+  color: #fff;
+  font-family: 'Montserrat', sans-serif;
+  display: flex;
+  flex-direction: column;
+  justify-content: center;
+  align-items: center;
+  text-align: center;
+  padding: 20px;
+  min-height: 100vh;
+  margin: 0;
+}
 
-    body {
-      background: linear-gradient(135deg, #0f0f0f, #1a1a1a);
-      color: #ffffff;
-      font-family: 'Arial', sans-serif;
-      display: flex;
-      flex-direction: column;
-      justify-content: center;
-      align-items: center;
-      height: 100vh;
-      text-align: center;
-      padding: 20px;
-    }
+@keyframes neonGradient {
+  0% {background-position:0% 50%; filter: brightness(1) saturate(1.2);}
+  25% {background-position:50% 100%; filter: brightness(1.2) saturate(1.4);}
+  50% {background-position:100% 50%; filter: brightness(1.4) saturate(1.6);}
+  75% {background-position:50% 0%; filter: brightness(1.2) saturate(1.4);}
+  100% {background-position:0% 50%; filter: brightness(1) saturate(1.2);}
+}
 
-    h1 {
-      font-size: 3rem;
-      color: #00ff88;
-      margin-bottom: 10px;
-    }
+.container {
+  display: flex;
+  flex-direction: column;
+  align-items: center;
+  max-width: 650px;
+  width: 100%;
+  flex: 1;
+}
 
-    p {
-      font-size: 1.2rem;
-      opacity: 0.8;
-      max-width: 500px;
-    }
+img.logo {
+  max-width: 550px;
+  width: 100%;
+  height: auto;
+  margin-bottom: 30px;
+  animation: fadeInDown 1.2s ease;
+  filter: drop-shadow(0 0 15px rgba(24,146,84,0.7));
+  transition: transform 0.3s ease, filter 0.3s ease;
+}
+img.logo:hover {
+  transform: scale(1.05);
+  filter: drop-shadow(0 0 25px rgba(24,146,84,1));
+}
 
-    .footer {
-      position: absolute;
-      bottom: 20px;
-      font-size: 0.9rem;
-      opacity: 0.5;
-    }
-  </style>
+p.texto-principal {
+  font-size: 1.3rem;
+  max-width: 600px;
+  margin: 20px auto;
+  line-height: 1.5;
+  color: #f8f9fa;
+  text-shadow: 0 0 10px rgba(24,146,84,0.8);
+}
+
+p.texto-principal strong {
+  font-weight: bold;
+  color: #ffffff;
+}
+
+form {
+  display: flex;
+  flex-direction: column;
+  gap: 12px;
+  width: 100%;
+  max-width: 500px;
+}
+
+.email-fields {
+  display: flex;
+  gap: 8px;
+  align-items: center;
+}
+.email-fields input {
+  flex: 1;
+  padding: 12px;
+  border-radius: 6px;
+  border: none;
+  background: rgba(255,255,255,0.1);
+  color: #fff;
+  font-size: 1rem;
+}
+.email-fields span {
+  color: #fff;
+  font-weight: bold;
+  font-size: 1.2rem;
+}
+
+select {
+  padding: 12px;
+  border-radius: 6px;
+  border: none;
+  background: rgba(255,255,255,0.1);
+  color: #fff;
+  font-size: 1rem;
+}
+
+select option, input[list] option {
+  background-color: #fff;
+  color: #000;
+}
+
+.phone-fields {
+  display: flex;
+  gap: 10px;
+}
+.phone-fields input {
+  flex: 1;
+  padding: 12px;
+  border-radius: 6px;
+  border: none;
+  background: rgba(255,255,255,0.1);
+  color: #fff;
+  font-size: 1rem;
+}
+
+/* Placeholder branco */
+input::placeholder,
+select::placeholder {
+  color: #fff;
+  opacity: 1;
+}
+
+button {
+  background: rgba(0,255,136,0.6);
+  color: #fff;
+  padding: 14px 28px;
+  border-radius: 8px;
+  border: none;
+  font-weight: bold;
+  text-transform: uppercase;
+  letter-spacing: 1px;
+  cursor: pointer;
+  box-shadow: 0 0 12px rgba(0,255,136,0.8);
+  backdrop-filter: blur(6px);
+  transition: all 0.3s ease;
+}
+button:hover {
+  background: rgba(0,204,106,0.6);
+  transform: scale(1.03);
+  box-shadow: 0 0 25px rgba(0,255,136,1);
+}
+
+.instagram-btn {
+  display: inline-flex;
+  align-items: center;
+  justify-content: center;
+  gap: 8px;
+  margin-top: 20px;
+  background: linear-gradient(45deg,#feda75,#fa7e1e,#d62976,#962fbf,#4f5bd5);
+  color: #fff;
+  padding: 12px 22px;
+  border-radius: 8px;
+  text-decoration: none;
+  font-weight: bold;
+  text-transform: uppercase;
+  box-shadow: 0 0 12px rgba(255,255,255,0.6);
+  transition: all 0.3s ease;
+}
+.instagram-btn:hover {
+  transform: scale(1.05);
+  box-shadow: 0 0 25px rgba(255,255,255,1);
+}
+
+footer {
+  margin-top: auto;
+  font-size: 0.9rem;
+  color: rgba(255,255,255,0.7);
+}
+
+@keyframes fadeInDown { from { opacity:0; transform: translateY(-20px);} to {opacity:1; transform: translateY(0);} }
+
+@media (max-width:480px){
+  img.logo { max-width: 300px; margin-bottom: 20px; }
+  p.texto-principal { font-size: 1.1rem; }
+  .email-fields, .phone-fields { flex-direction: column; align-items: stretch; }
+  .email-fields span { display: none; }
+  input, select, button { font-size: 0.95rem; padding: 10px; }
+  .phone-fields input { max-width: 100%; }
+  .instagram-btn { font-size: 0.95rem; padding: 10px 18px; }
+}
+</style>
+<script src="https://kit.fontawesome.com/a076d05399.js" crossorigin="anonymous"></script>
 </head>
 <body>
-  <h1>OverDollar</h1>
-  <p>
-    Estamos preparando algo especial para você.<br />
-    Nosso site oficial estará no ar no dia <strong>20 de setembro</strong>.
+<div class="container">
+  <img src="LGOVERDOLLAR.png" alt="Logo da OverDollar" class="logo">
+
+  <p class="texto-principal">
+   Nosso site ficará disponível em 20/09.<br>
+    <strong>FIQUE DE OLHO!</strong>
   </p>
 
-  <div class="footer">
-    © OverDollar 2025
-  </div>
+  <form>
+    <div class="email-fields">
+      <input type="text" placeholder="E-mail" required>
+      <span>@</span>
+      <input list="dominios" placeholder="Domínio" required>
+      <datalist id="dominios">
+        <option value="gmail.com">
+        <option value="hotmail.com">
+        <option value="yahoo.com">
+        <option value="outlook.com">
+        <option value="icloud.com">
+        <option value="uol.com.br">
+        <option value="bol.com.br">
+      </datalist>
+    </div>
+
+    <div class="phone-fields">
+      <input type="tel" placeholder="DDD" required style="max-width: 80px;">
+      <input type="tel" placeholder="Número" required>
+    </div>
+
+    <select required>
+      <option value="" disabled selected>Selecione o País</option>
+      <option value="+54">Argentina (+54)</option>
+      <option value="+591">Bolívia (+591)</option>
+      <option value="+55">Brasil (+55)</option>
+      <option value="+56">Chile (+56)</option>
+      <option value="+57">Colômbia (+57)</option>
+      <option value="+506">Costa Rica (+506)</option>
+      <option value="+53">Cuba (+53)</option>
+      <option value="+1-809">República Dominicana (+1-809)</option>
+      <option value="+593">Equador (+593)</option>
+      <option value="+503">El Salvador (+503)</option>
+      <option value="+502">Guatemala (+502)</option>
+      <option value="+504">Honduras (+504)</option>
+      <option value="+52">México (+52)</option>
+      <option value="+505">Nicarágua (+505)</option>
+      <option value="+507">Panamá (+507)</option>
+      <option value="+595">Paraguai (+595)</option>
+      <option value="+51">Peru (+51)</option>
+      <option value="+598">Uruguai (+598)</option>
+      <option value="+58">Venezuela (+58)</option>
+    </select>
+
+    <button type="submit">QUERO SER AVISADO!</button>
+  </form>
+
+  <a href="https://www.instagram.com/OVER_DOLLAR/#" target="_blank" class="instagram-btn">
+    <i class="fab fa-instagram"></i> @over_dollar
+  </a>
+
+  <footer>© OverDollar 2025</footer>
+</div>
 </body>
 </html>
