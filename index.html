@@ -74,24 +74,28 @@ form {
   max-width: 500px;
 }
 
-.email-fields {
+.email-fields, .phone-fields {
   display: flex;
   gap: 8px;
-  align-items: center;
+  width: 100%;
 }
-.email-fields input {
-  flex: 1;
+
+.email-fields input, .phone-fields input {
   padding: 12px;
   border-radius: 6px;
   border: none;
   background: rgba(255,255,255,0.1);
   color: #fff;
   font-size: 1rem;
+  flex: 1;
+  min-width: 0; /* garante responsividade */
 }
+
 .email-fields span {
   color: #fff;
   font-weight: bold;
   font-size: 1.2rem;
+  align-self: center;
 }
 
 select {
@@ -106,20 +110,6 @@ select {
 select option, input[list] option {
   background-color: #fff;
   color: #000;
-}
-
-.phone-fields {
-  display: flex;
-  gap: 10px;
-}
-.phone-fields input {
-  flex: 1;
-  padding: 12px;
-  border-radius: 6px;
-  border: none;
-  background: rgba(255,255,255,0.1);
-  color: #fff;
-  font-size: 1rem;
 }
 
 /* Placeholder branco */
@@ -178,22 +168,16 @@ footer {
 
 @keyframes fadeInDown { from { opacity:0; transform: translateY(-20px);} to {opacity:1; transform: translateY(0);} }
 
+@media (max-width:768px){
+  img.logo { max-width: 400px; margin-bottom: 20px; }
+  p.texto-principal { font-size: 1.2rem; }
+  .email-fields span { font-size: 1rem; }
+  input, select, button { font-size: 0.95rem; padding: 10px; }
+}
+
 @media (max-width:480px){
-  img.logo { max-width: 300px; margin-bottom: 20px; }
-  p.texto-principal { font-size: 1.1rem; }
-
-  /* Email + dominio lado a lado */
-  .email-fields { flex-direction: row; align-items: center; gap: 8px; }
-  .email-fields span { display: inline; }
-  .email-fields input { flex: 1; font-size: 0.95rem; padding: 10px; }
-
-  /* DDD + número lado a lado */
-  .phone-fields { flex-direction: row; align-items: center; gap: 8px; }
-  .phone-fields input { flex: 1; font-size: 0.95rem; padding: 10px; }
-  .phone-fields input:first-child { max-width: 80px; }
-
-  select, button { font-size: 0.95rem; padding: 10px; }
-  .instagram-btn { font-size: 0.95rem; padding: 10px 18px; }
+  .email-fields { gap: 5px; }
+  .phone-fields { gap: 5px; }
 }
 </style>
 <script src="https://kit.fontawesome.com/a076d05399.js" crossorigin="anonymous"></script>
@@ -224,7 +208,7 @@ footer {
     </div>
 
     <div class="phone-fields">
-      <input type="tel" placeholder="DDD" required>
+      <input type="tel" placeholder="DDD" required style="max-width: 80px;">
       <input type="tel" placeholder="Número" required>
     </div>
 
