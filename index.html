@@ -105,6 +105,7 @@ select {
   background: rgba(255,255,255,0.1);
   color: #fff;
   font-size: 1rem;
+  width: 100%;
 }
 
 select option, input[list] option {
@@ -192,6 +193,7 @@ footer {
   </p>
 
   <form>
+    <!-- Email + domínio -->
     <div class="email-fields">
       <input type="text" placeholder="E-mail" required>
       <span>@</span>
@@ -207,11 +209,7 @@ footer {
       </datalist>
     </div>
 
-    <div class="phone-fields">
-      <input type="tel" placeholder="DDD" required style="max-width: 80px;">
-      <input type="tel" placeholder="Número" required>
-    </div>
-
+    <!-- País -->
     <select required>
       <option value="" disabled selected>Selecione o País</option>
       <option value="+54">Argentina (+54)</option>
@@ -234,6 +232,12 @@ footer {
       <option value="+598">Uruguai (+598)</option>
       <option value="+58">Venezuela (+58)</option>
     </select>
+
+    <!-- DDD + número -->
+    <div class="phone-fields">
+      <input type="tel" placeholder="DDD" required style="max-width: 80px;">
+      <input type="tel" placeholder="Número" required>
+    </div>
 
     <button type="submit">QUERO SER AVISADO!</button>
   </form>
