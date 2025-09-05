@@ -188,7 +188,6 @@ footer {
 </head>
 <body>
 <div class="container">
-  <!-- Logo principal -->
   <img src="LGOVERDOLLAR.png" alt="Logo da OverDollar" class="logo">
 
   <p class="texto-principal">
@@ -197,7 +196,6 @@ footer {
   </p>
 
   <form id="overForm">
-    <!-- Email + domínio -->
     <div class="email-fields">
       <input type="text" placeholder="E-mail" required>
       <span>@</span>
@@ -213,7 +211,6 @@ footer {
       </datalist>
     </div>
 
-    <!-- País -->
     <select required>
       <option value="" disabled selected>Selecione o País</option>
       <option value="+54">Argentina (+54)</option>
@@ -237,7 +234,6 @@ footer {
       <option value="+58">Venezuela (+58)</option>
     </select>
 
-    <!-- DDD + número -->
     <div class="phone-fields">
       <input type="tel" placeholder="DDD" required style="max-width: 80px;">
       <input type="tel" placeholder="Número" required>
@@ -257,22 +253,30 @@ footer {
 document.getElementById("overForm").addEventListener("submit", async function(e) {
   e.preventDefault();
 
-  let email = this.querySelector("input[placeholder='E-mail']").value;
-  let dominio = this.querySelector("input[placeholder='Domínio']").value;
-  let pais = this.querySelector("select").value;
-  let ddd = this.querySelector("input[placeholder='DDD']").value;
-  let numero = this.querySelector("input[placeholder='Número']").value;
+  const email = this.querySelector("input[placeholder='E-mail']").value;
+  const dominio = this.querySelector("input[placeholder='Domínio']").value;
+  const pais = this.querySelector("select").value;
+  const ddd = this.querySelector("input[placeholder='DDD']").value;
+  const numero = this.querySelector("input[placeholder='Número']").value;
 
-  let data = { email, dominio, pais, ddd, numero };
+  const data = { email, dominio, pais, ddd, numero };
 
-  await fetch("https://script.google.com/macros/s/AKfycbwjIImhHZKV_YMqrFGGivqgZEIJedUJttE3jiS3h3IiPDOfrvoWC8TtlBjTIrdG8KOW/exec", {
-    method: "POST",
-    body: JSON.stringify(data),
-    headers: { "Content-Type": "application/json" }
-  });
+  try {
+    // Endpoint do Vercel (mesmo deploy do site)
+    const response = await fetch("/api/submit-form", {
+      method: "POST",
+      headers: { "Content-Type": "application/json" },
+      body: JSON.stringify(data)
+    });
 
-  alert("✅ Obrigado! Seus dados foram salvos.");
-  this.reset();
+    if (!response.ok) throw new Error("Erro no envio");
+
+    alert("✅ Obrigado! Seus dados foram enviados com sucesso.");
+    this.reset();
+  } catch (err) {
+    console.error(err);
+    alert("❌ Ocorreu um erro ao enviar os dados. Tente novamente mais tarde.");
+  }
 });
 </script>
 </body>
