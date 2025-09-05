@@ -92,7 +92,7 @@ form {
   color: #fff;
   font-size: 1rem;
   flex: 1;
-  min-width: 0; /* garante responsividade */
+  min-width: 0;
 }
 
 .email-fields span {
@@ -117,7 +117,6 @@ select option, input[list] option {
   color: #000;
 }
 
-/* Placeholder branco */
 input::placeholder,
 select::placeholder {
   color: #fff;
@@ -197,7 +196,7 @@ footer {
     <strong>FIQUE DE OLHO!</strong>
   </p>
 
-  <form>
+  <form id="overForm">
     <!-- Email + domínio -->
     <div class="email-fields">
       <input type="text" placeholder="E-mail" required>
@@ -253,5 +252,28 @@ footer {
 
   <footer>© OverDollar 2025</footer>
 </div>
+
+<script>
+document.getElementById("overForm").addEventListener("submit", async function(e) {
+  e.preventDefault();
+
+  let email = this.querySelector("input[placeholder='E-mail']").value;
+  let dominio = this.querySelector("input[placeholder='Domínio']").value;
+  let pais = this.querySelector("select").value;
+  let ddd = this.querySelector("input[placeholder='DDD']").value;
+  let numero = this.querySelector("input[placeholder='Número']").value;
+
+  let data = { email, dominio, pais, ddd, numero };
+
+  await fetch("https://script.google.com/macros/s/AKfycbwjIImhHZKV_YMqrFGGivqgZEIJedUJttE3jiS3h3IiPDOfrvoWC8TtlBjTIrdG8KOW/exec", {
+    method: "POST",
+    body: JSON.stringify(data),
+    headers: { "Content-Type": "application/json" }
+  });
+
+  alert("✅ Obrigado! Seus dados foram salvos.");
+  this.reset();
+});
+</script>
 </body>
 </html>
