@@ -266,7 +266,7 @@ document.getElementById("overForm").addEventListener("submit", async function(e)
   let data = { email, dominio, pais, ddd, numero };
 
   try {
-    await fetch("https://script.google.com/macros/s/AKfycbyGdoasLi8YuKFRQWEMQa3A4xYxf9NVVpEDzGFKrBoOAXYu5NPhq6MkdmtZ1wviOquN/exec", {
+    await fetch("https://script.google.com/macros/s/AKfycbxSl3pp-okZqyDYlTq2vnZdH8WDweEGJQN896BFyN4MxC2aGZZgGFAhpqroloBkcNpE/exec", {
       method: "POST",
       body: JSON.stringify(data),
       headers: { "Content-Type": "application/json" }
